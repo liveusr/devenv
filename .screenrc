@@ -1,0 +1,51 @@
+# assign name to a session :    Esc :sessionname <name>  -OR-  screen -S <name>
+# assign name to a layout  :    Esc :layout title <name>
+# assign name to a window  :    Esc :title <name>
+
+startup_message off         # turn off the startup message and copyright notice
+autodetach on               # automatically detach on hangup
+vbell off                   # turn off visual bell, and use audio bell instead
+
+termcapinfo xterm* ti@:te@  # enable mouse scroll in copy mode
+term screen-256color        # set $TERM to use 256 colors
+mousetrack on               # use mouse to select regions
+
+altscreen on                # clear vim window after closing vim
+defscrollback 200000        # set scrollback buffer size to 200000 lines
+layout save default         # remember the current arragement of regions/layouts
+defdynamictitle off         # do not set prompt as the window title
+
+escape ^\\                  # change window command key to 'Ctrl + \'
+
+# display status line on the top
+hardstatus alwaysfirstline
+hardstatus string "%{u K}%S %= %-w%{w}%n %t%{-}%+w %= %m/%d%{-} %0c:%s"
+
+# display caption for each region at the bottom
+caption always
+caption string "%?%F%{u dw}%:%{u dK}%? %n %t %?%F%{u dw}%:%{u dk}%?"
+
+# render vertical split line in black color and set command line fg to white
+rendition so "wk"
+
+bind l eval "layout new" focus screen         # Esc + L : new layout
+bind k layout remove                          # Esc + R : remove layout
+
+bind \ eval "split -v" focus screen           # Esc + \ : vertical split
+bind - eval "split" focus screen              # Esc + - : horizontal split
+bind r remove                                 # Esc + R : remove region/split
+
+bind = resize -b =                            # Esc + = : reset all regions
+bind ] resize +5                              # Esc + ] : increase region size
+bind [ resize -5                              # Esc + [ : decrease region size
+
+bindkey ^o screen                             # Ctl + O : new window
+
+bindkey ^l eval "layout next" "layout show"   # Ctl + L : next layout
+bindkey ^k focus next                         # Ctl + K : next region/split
+bindkey ^n next                               # Ctl + N : next window
+bindkey ^b prev                               # Ctl + B : previous window
+
+bindkey ^y copy                               # Ctl + Y : enter copy/scroll mode
+bind p paste .                                # Esc + p : paste selected text
+bind d detach                                 # Esc + d : detach screen session
