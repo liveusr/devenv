@@ -64,7 +64,7 @@ bind d detach                                 # Esc + d : detach screen session
 
 escape ^``                  # change window command key to 'Ctrl + `'
 
-## display status line at the bottom
+# display status line at the bottom
 hardstatus alwayslastline
 hardstatus string "%{u k}%=%-w%{w}%n %t%{-}%+w%="
 
