@@ -33,12 +33,10 @@ escape ^\\                  # change window command key to 'Ctrl + \'
 
 # display status line on the top
 hardstatus alwaysfirstline
-#hardstatus string "%{u k}%S %= %-w%{w}%n %t%{-}%+w %= %m/%d%{-} %0c:%s"
 hardstatus string "%{u K}%S %= %-w%{w}%n %t%{-}%+w %= %m/%d%{-} %0c:%s"
 
 # display caption for each region at the bottom
 caption always
-#caption string "%?%F%{u dw}%:%{u dk}%?%=%?%F%{u dw}%:%{u dK}%?[%t]%{-}%="
 caption string "%?%F%{u kK}%:%{= kk}%?%=%?%F%{= kw}%:%{= kK}%? [%t] %{-}%="
 
 # render vertical split line in black color and set command line fg to white
@@ -68,7 +66,6 @@ escape ^``                  # change window command key to 'Ctrl + `'
 
 # display status line at the bottom
 hardstatus alwayslastline
-#hardstatus string "%{u k}%=%-w%{w}%n %t%{-}%+w%="
 hardstatus string "%{Kk}%=%-w%{w}%n %t%{-}%+w%="
 
 bindkey ^o screen                             # Ctl + O : new window
