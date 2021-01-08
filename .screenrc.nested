@@ -33,7 +33,7 @@ escape ^\\                  # change window command key to 'Ctrl + \'
 
 # display status line on the top
 hardstatus alwaysfirstline
-hardstatus string "%{= kK}[%S] %= %-w%{w}%n %t%{-}%+w %= %m/%d %{w}%0c:%s"
+hardstatus string "%{= kK}[%S] %= %-w%{w}%n %t%{-}%+w %= %D, %M %d %{w}%0c:%s"
 
 # display caption for each region at the bottom
 caption always
@@ -53,10 +53,15 @@ bind = resize -b =                            # Esc + = : reset all regions
 bind ] resize +5                              # Esc + ] : increase region size
 bind [ resize -5                              # Esc + [ : decrease region size
 
+bind j next                                   # Esc + J : next window
+bind h prev                                   # Esc + H : previous window
+
 bindkey ^l eval "layout next" "layout show"   # Ctl + L : next layout
 bindkey ^k focus next                         # Ctl + K : next region/split
 
-bind d detach                                 # Esc + d : detach screen session
+bind y copy                                   # Esc + Y : enter copy/scroll mode
+bind o paste .                                # Esc + O : paste selected text
+bind d detach                                 # Esc + D : detach screen session
 
 ################################################################################
 #                              child configuration                             #
@@ -70,8 +75,8 @@ hardstatus string "%{Kk}%=%-w%{w}%n %t%{-}%+w%="
 
 bindkey ^o screen                             # Ctl + O : new window
 
-bindkey ^n next                               # Ctl + N : next window
-bindkey ^b prev                               # Ctl + B : previous window
+bindkey ^j next                               # Ctl + J : next window
+bindkey ^h prev                               # Ctl + H : previous window
 
 bindkey ^y copy                               # Ctl + Y : enter copy/scroll mode
-bind p paste .                                # Esc + p : paste selected text
+bind p paste .                                # Esc + P : paste selected text
