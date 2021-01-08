@@ -1,9 +1,9 @@
 # copy this file to .screenrc.parent and .screenrc.child and comment 'child
 # configuration' section from .screenrc.parent and vice versa
-
-# add this to bashrc : alias sp='screen -S parent -c .screenrc.parent'
-# add this to bashrc : alias sc='screen -S child -c .screenrc.child'
-
+#
+# add this to bashrc : alias sp='screen -S screen -c .screenrc.parent'
+# add this to bashrc : alias sc='screen -S nested -c .screenrc.child'
+#
 # assign name to a session :    Esc :sessionname <name>  -OR-  screen -S <name>
 # assign name to a layout  :    Esc :layout title <name>
 # assign name to a window  :    Esc :title <name>
