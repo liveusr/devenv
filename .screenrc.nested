@@ -33,7 +33,6 @@ escape ^\\                  # change window command key to 'Ctrl + \'
 
 # display status line on the top
 hardstatus alwaysfirstline
-#hardstatus string "%{u K}%S %= %-w%{w}%n %t%{-}%+w %= %m/%d%{-} %0c:%s"
 hardstatus string "%{= kK}[%S] %= %-w%{w}%n %t%{-}%+w %= %m/%d %{w}%0c:%s"
 
 # display caption for each region at the bottom
