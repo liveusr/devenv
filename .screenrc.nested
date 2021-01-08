@@ -75,7 +75,6 @@ hardstatus alwayslastline
 hardstatus string "%{Kk}%=%-w%{w}%n %t%{-}%+w%="
 
 bindkey ^o screen                             # Ctl + O : new window
-
 bindkey ^j next                               # Ctl + J : next window
 bindkey ^h prev                               # Ctl + H : previous window
 
