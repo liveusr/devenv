@@ -1,6 +1,10 @@
 # copy this file to .screenrc.parent and .screenrc.child and comment 'child
 # configuration' section from .screenrc.parent and vice versa
 #
+# execute the following commands to create a bash script to print EST time:
+# $ echo "TZ=America/New_York date +\"%H:%M %Z\"" > $HOME/.edate.sh
+# $ chmod +x $HOME/.edate.sh
+#
 # add this to bashrc : alias sp='screen -S screen -c .screenrc.parent'
 # add this to bashrc : alias sc='screen -S nested -c .screenrc.child'
 #
@@ -32,8 +36,9 @@ defdynamictitle off         # do not set prompt as the window title
 escape ^\\                  # change window command key to 'Ctrl + \'
 
 # display status line on the top
+backtick 1 0 1 "$HOME/.edate.sh"
 hardstatus alwaysfirstline
-hardstatus string "%{= kK}[%S] %= %-w%{w}%n %t%{-}%+w %= %D, %M %d %{w}%0c:%s"
+hardstatus string "%{= kK}[%S] %1` %= %-w%{w}%n %t%{-}%+w%=%D, %M %d %{w}%0c:%s"
 
 # display caption for each region at the bottom
 caption always
