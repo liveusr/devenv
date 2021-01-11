@@ -4,8 +4,8 @@
 # copy .fetch_rate.sh to $HOME/ and run it in the background to update rate
 # $ while true; do $HOME/.fetch_rate.sh; sleep 600; done &
 #
-# add this to bashrc : alias sp='screen -S screen -c .screenrc.parent'
-# add this to bashrc : alias sc='screen -S nested -c .screenrc.child'
+# add this to bashrc : alias sp='screen -S screen -c $HOME/.screenrc.parent'
+# add this to bashrc : alias sc='screen -S nested -c $HOME/.screenrc.child'
 #
 # assign name to a session :    Esc :sessionname <name>  -OR-  screen -S <name>
 # assign name to a layout  :    Esc :layout title <name>
@@ -38,14 +38,14 @@ escape ^\\                  # change window command key to 'Ctrl + \'
 backtick 1 0 1 env TZ="America/New_York" date +"%H:%M "
 backtick 2 0 1 cat $HOME/.rate
 hardstatus alwaysfirstline
-hardstatus string "%{= kK}[%S]%2`%=%-w%{w}%n %t%{-}%+w%=%1`%D, %M %d %{w}%0c:%s"
+hardstatus string "%{= Kk}[%S]%2`%=%-w%{w}%n %t%{-}%+w%=%1`%D, %M %d %{w}%0c:%s"
 
 # display caption for each region at the bottom
 caption always
-caption string "%?%F%{u kK}%:%{= kk}%?%=%?%F%{= kw}%:%{= kK}%? [%t] %{-}%="
+caption string "%?%F%{= wk}%:%{= KK}%?%=%?%F%{= wk}%:%{= Kk}%? [%t] %{-}%="
 
 # render vertical split line in black color and set command line fg to white
-rendition so "wk"
+rendition so "wK"
 
 bind l eval "layout new" focus screen         # Esc + L : new layout
 bind k layout remove                          # Esc + R : remove layout
