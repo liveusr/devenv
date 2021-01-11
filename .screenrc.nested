@@ -1,6 +1,9 @@
 # copy this file to .screenrc.parent and .screenrc.child and comment 'child
 # configuration' section from .screenrc.parent and vice versa
 #
+# copy .fetch_rate.sh to $HOME/ and run it in the background to update rate
+# $ while true; do $HOME/.fetch_rate.sh; sleep 600; done &
+#
 # add this to bashrc : alias sp='screen -S screen -c .screenrc.parent'
 # add this to bashrc : alias sc='screen -S nested -c .screenrc.child'
 #
@@ -33,8 +36,9 @@ escape ^\\                  # change window command key to 'Ctrl + \'
 
 # display status line on the top
 backtick 1 0 1 env TZ="America/New_York" date +"%H:%M %Z"
+backtick 2 0 1 cat $HOME/.rate
 hardstatus alwaysfirstline
-hardstatus string "%{= kK}[%S] %1` %= %-w%{w}%n %t%{-}%+w%=%D, %M %d %{w}%0c:%s"
+hardstatus string "%{= kK}[%S]%2`%=%-w%{w}%n %t%{-}%+w%=%1`%D, %M %d %{w}%0c:%s"
 
 # display caption for each region at the bottom
 caption always
