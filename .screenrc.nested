@@ -21,7 +21,7 @@ vbell off                   # turn off visual bell, and use audio bell instead
 
 termcapinfo xterm* ti@:te@  # enable mouse scroll in copy mode
 term screen-256color        # set $TERM to use 256 colors
-mousetrack on               # use mouse to select regions
+#mousetrack on              # use mouse to select regions
 
 altscreen on                # clear vim window after closing vim
 defscrollback 200000        # set scrollback buffer size to 200000 lines
@@ -35,7 +35,7 @@ defdynamictitle off         # do not set prompt as the window title
 escape ^\\                  # change window command key to 'Ctrl + \'
 
 # display status line on the top
-backtick 1 0 1 env TZ="America/New_York" date +"%H:%M %Z"
+backtick 1 0 1 env TZ="America/New_York" date +"%H:%M "
 backtick 2 0 1 cat $HOME/.rate
 hardstatus alwaysfirstline
 hardstatus string "%{= kK}[%S]%2`%=%-w%{w}%n %t%{-}%+w%=%1`%D, %M %d %{w}%0c:%s"
