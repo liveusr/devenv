@@ -77,7 +77,7 @@ escape ^``                  # change window command key to 'Ctrl + `'
 
 # display status line at the bottom
 hardstatus alwayslastline
-hardstatus string "%{Kk}%=%-w%{w}%n %t%{-}%+w%="
+hardstatus string "%{kK}%=%-w%{w}%n %t%{-}%+w%="
 
 bindkey ^o screen                             # Ctl + O : new window
 bindkey ^j next                               # Ctl + J : next window
