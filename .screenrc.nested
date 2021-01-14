@@ -8,7 +8,6 @@
 # add this to bashrc : alias sc='screen -S nested -c $HOME/.screenrc.child'
 #
 # assign name to a session :    Esc :sessionname <name>  -OR-  screen -S <name>
-# assign name to a layout  :    Esc :layout title <name>
 # assign name to a window  :    Esc :title <name>
 
 ################################################################################
@@ -21,7 +20,6 @@ vbell off                   # turn off visual bell, and use audio bell instead
 
 termcapinfo xterm* ti@:te@  # enable mouse scroll in copy mode
 term screen-256color        # set $TERM to use 256 colors
-#mousetrack on              # use mouse to select regions
 
 altscreen on                # clear vim window after closing vim
 defscrollback 200000        # set scrollback buffer size to 200000 lines
@@ -32,57 +30,57 @@ defdynamictitle off         # do not set prompt as the window title
 #                             parent configuration                             #
 ################################################################################
 
-escape ^\\                  # change window command key to 'Ctrl + \'
+escape ^``                  # change window command key to 'Ctrl + `'
 
-# display status line on the top
-backtick 1 0 1 env TZ="America/New_York" date +"%H:%M "
+# display status line at the top
+backtick 1 0 1 env TZ="America/New_York" date +"%H:%M %Z"
 backtick 2 0 1 cat $HOME/.rate
 hardstatus alwaysfirstline
-hardstatus string "%{= Kk}[%S]%2`%=%-w%{w}%n %t%{-}%+w%=%1`%D, %M %d %{w}%0c:%s"
+hardstatus string "%{u dK}[%S]%2` %= %D %M %d %1`%{= dw} %0c:%s"
 
-# display caption for each region at the bottom
+# display caption at the bottom
 caption always
-caption string "%?%F%{= wk}%:%{= KK}%?%=%?%F%{= wk}%:%{= Kk}%? [%t] %{-}%="
+caption string "%{kK}%= %-w%{w}%n %t%{-}%+w %="
 
-# render vertical split line in black color and set command line fg to white
-rendition so "wK"
+bindkey ^o screen                             # Ctl + O : new window
 
-bind l eval "layout new" focus screen         # Esc + L : new layout
-bind k layout remove                          # Esc + R : remove layout
+bindkey ^k next                               # Ctl + K : next window
+bindkey ^j prev                               # Ctl + J : previous window
 
-bind \ eval "split -v" focus screen           # Esc + \ : vertical split
-bind - eval "split" focus screen              # Esc + - : horizontal split
-bind r remove                                 # Esc + R : remove region/split
-
-bind = resize -b =                            # Esc + = : reset all regions
-bind ] resize +5                              # Esc + ] : increase region size
-bind [ resize -5                              # Esc + [ : decrease region size
-
-bindkey ^l eval "layout next" "layout show"   # Ctl + L : next layout
-bindkey ^k focus next                         # Ctl + K : next region/split
-
-bind o screen                                 # Esc + O : new window
-bind j next                                   # Esc + J : next window
-bind h prev                                   # Esc + H : previous window
-
-bind y copy                                   # Esc + Y : enter copy/scroll mode
-bind v paste .                                # Esc + V : paste selected text
+bindkey ^y copy                               # Ctl + Y : enter copy/scroll mode
+bind p paste .                                # Esc + P : paste selected text
 bind d detach                                 # Esc + D : detach screen session
 
 ################################################################################
 #                              child configuration                             #
 ################################################################################
 
-escape ^``                  # change window command key to 'Ctrl + `'
+escape ^\\                  # change window command key to 'Ctrl + \'
 
-# display status line at the bottom
-hardstatus alwayslastline
-hardstatus string "%{kK}%=%-w%{w}%n %t%{-}%+w%="
+# do not display status line
+hardstatus off
 
-bindkey ^o screen                             # Ctl + O : new window
-bindkey ^j next                               # Ctl + J : next window
-bindkey ^h prev                               # Ctl + H : previous window
+# display caption for each region at the bottom
+caption always
+caption string "%?%F%{kw}%:%{kK}%? %= %t %="
 
-bindkey ^y copy                               # Ctl + Y : enter copy/scroll mode
+# render vertical split line in gray color and set command line fg to white
+rendition so "wK"
+
+bind \ eval "split -v" focus screen           # Esc + \ : vertical split
+bind = eval "split" focus screen              # Esc + = : horizontal split
+bind - remove                                 # Esc + - : remove region/split
+
+bind _ resize -b =                            # Esc + _ : reset all regions
+bind ] resize +5                              # Esc + ] : increase region size
+bind [ resize -5                              # Esc + [ : decrease region size
+
+bindkey ^l focus next                         # Ctl + L : next region/split
+
+bind o screen                                 # Esc + O : new window
+bind k next                                   # Esc + K : next window
+bind j prev                                   # Esc + J : previous window
+
+bind y copy                                   # Esc + Y : enter copy/scroll mode
 bind p paste .                                # Esc + P : paste selected text
-bind x detach                                 # Esc + X : detach screen session
+bind d detach                                 # Esc + D : detach screen session
