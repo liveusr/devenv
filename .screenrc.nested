@@ -44,8 +44,8 @@ caption string "%{kK}%= %-w%{w}%n %t%{-}%+w %="
 
 bindkey ^o screen                             # Ctl + O : new window
 
-bindkey ^k next                               # Ctl + K : next window
-bindkey ^j prev                               # Ctl + J : previous window
+bindkey ^l next                               # Ctl + L : next window
+bindkey ^k prev                               # Ctl + K : previous window
 
 bindkey ^y copy                               # Ctl + Y : enter copy/scroll mode
 bind p paste .                                # Esc + P : paste selected text
@@ -75,11 +75,11 @@ bind _ resize -b =                            # Esc + _ : reset all regions
 bind ] resize +5                              # Esc + ] : increase region size
 bind [ resize -5                              # Esc + [ : decrease region size
 
-bindkey ^l focus next                         # Ctl + L : next region/split
+bindkey ^j focus next                         # Ctl + J : next region/split
 
 bind o screen                                 # Esc + O : new window
-bind k next                                   # Esc + K : next window
-bind j prev                                   # Esc + J : previous window
+bind l next                                   # Esc + L : next window
+bind k prev                                   # Esc + K : previous window
 
 bind y copy                                   # Esc + Y : enter copy/scroll mode
 bind p paste .                                # Esc + P : paste selected text
