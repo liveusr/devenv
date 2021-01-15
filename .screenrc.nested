@@ -62,7 +62,7 @@ hardstatus off
 
 # display caption for each region at the bottom
 caption always
-caption string "%?%F%{kw}%:%{kK}%? %= %t %="
+caption string "%?%F%{kw}%:%{kK}%? %= [%t] %="
 
 # render vertical split line in gray color and set command line fg to white
 rendition so "wK"
