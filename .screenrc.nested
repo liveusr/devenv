@@ -68,10 +68,10 @@ caption string "%?%F%{kw}%:%{kK}%? %= [%t] %="
 rendition so "wK"
 
 bind \ eval "split -v" focus screen           # Esc + \ : vertical split
-bind = eval "split" focus screen              # Esc + = : horizontal split
-bind - remove                                 # Esc + - : remove region/split
+bind - eval "split" focus screen              # Esc + - : horizontal split
+bind x remove                                 # Esc + x : remove region/split
 
-bind _ resize -b =                            # Esc + _ : reset all regions
+bind = resize -b =                            # Esc + = : reset all regions
 bind ] resize +5                              # Esc + ] : increase region size
 bind [ resize -5                              # Esc + [ : decrease region size
 
