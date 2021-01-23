@@ -40,7 +40,7 @@ hardstatus string "%{u dK}[%S]%2` %= %D %M %d %1`%{= dw} %0c:%s"
 
 # display caption at the bottom
 caption always
-caption string "%{kK}%= %-w%{w}%n %t%{-}%+w %="
+caption string "%{kK} (Esc)` (+)O%= %-w%{w}%n %t%{-}%+w %=  (<)K (>)L "
 
 bindkey ^o screen                             # Ctl + O : new window
 
@@ -62,20 +62,21 @@ hardstatus off
 
 # display caption for each region at the bottom
 caption always
-caption string "%?%F%{kw}%:%{kK}%? %= [%t] %="
+caption string "%?%F%{Ww} (Esc)\ (x)X (|)\ (-)-%{kw}%:%{kK}%? %= [%t] %= %?%F%{Ww}            (<)H (>)J %?"
 
 # render vertical split line in gray color and set command line fg to white
 rendition so "wK"
 
 bind \ eval "split -v" focus screen           # Esc + \ : vertical split
 bind - eval "split" focus screen              # Esc + - : horizontal split
-bind x remove                                 # Esc + x : remove region/split
+bind x remove                                 # Esc + X : remove region/split
 
 bind = resize -b =                            # Esc + = : reset all regions
 bind ] resize +5                              # Esc + ] : increase region size
 bind [ resize -5                              # Esc + [ : decrease region size
 
 bindkey ^j focus next                         # Ctl + J : next region/split
+bindkey ^h focus prev                         # Ctl + H : prev region/split
 
 bind o screen                                 # Esc + O : new window
 bind l next                                   # Esc + L : next window
