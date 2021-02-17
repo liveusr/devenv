@@ -142,6 +142,6 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 "     directory is present in PWD
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if isdirectory(".backup")
-    au BufRead      * silent !cp % .backup/$(date +\%y\%m\%d\%H\%M\%S)\ o$(echo %:p | sed 's/\//\-/g')
+    au BufReadPre   * silent !cp % .backup/$(date +\%y\%m\%d\%H\%M\%S)\ o$(echo %:p | sed 's/\//\-/g')
     au BufWritePost * silent !cp % .backup/$(date +\%y\%m\%d\%H\%M\%S)\ w$(echo %:p | sed 's/\//\-/g')
 endif
