@@ -138,7 +138,8 @@ map T :tags <CR>
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"   - create backup of the intermediate states of a file
+"   - create a backup of the intermediate states of a file, only if '.backup'
+"     directory is present in PWD
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if isdirectory(".backup")
     au BufRead      * silent !cp % .backup/$(date +\%y\%m\%d\%H\%M\%S)\ o$(echo %:p | sed 's/\//\-/g')
