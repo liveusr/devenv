@@ -40,12 +40,12 @@ hardstatus string "%{u dK}[%S]%2` %= %D %M %d %1`%{= dw} %0c:%s"
 
 # display caption at the bottom
 caption always
-caption string "%{kK} (Esc)` (+)O%= %-w%{w}%n %t%{-}%+w %=  (<)K (>)L "
+caption string "%{kK} (Esc)` (+)O%= %-w%{w}%n %t%{-}%+w %=  (<)J (>)L "
 
 bindkey ^o screen                             # Ctl + O : new window
 
 bindkey ^l next                               # Ctl + L : next window
-bindkey ^k prev                               # Ctl + K : previous window
+bindkey ^j prev                               # Ctl + J : previous window
 
 bindkey ^y copy                               # Ctl + Y : enter copy/scroll mode
 bind p paste .                                # Esc + P : paste selected text
@@ -62,7 +62,7 @@ hardstatus off
 
 # display caption for each region at the bottom
 caption always
-caption string "%?%F%{yw} (Esc)\ (x)X (|)\ (-)-%{kw}%:%{kK}%? %= [%t] %= %?%F%{yw}            (<)H (>)J %?"
+caption string "%?%F%{yw} (Esc)\ (x)X (|)\ (-)-%{kw}%:%{kK}%? %= [%t] %= %?%F%{yw}            (<)H (>)K %?"
 
 # render vertical split line in gray color and set command line fg to white
 rendition so "wK"
@@ -75,12 +75,12 @@ bind = resize -b =                            # Esc + = : reset all regions
 bind ] resize +5                              # Esc + ] : increase region size
 bind [ resize -5                              # Esc + [ : decrease region size
 
-bindkey ^j focus next                         # Ctl + J : next region/split
+bindkey ^k focus next                         # Ctl + K : next region/split
 bindkey ^h focus prev                         # Ctl + H : prev region/split
 
 bind o screen                                 # Esc + O : new window
-bind l next                                   # Esc + L : next window
-bind k prev                                   # Esc + K : previous window
+bind k next                                   # Esc + K : next window
+bind h prev                                   # Esc + H : previous window
 
 bind y copy                                   # Esc + Y : enter copy/scroll mode
 bind p paste .                                # Esc + P : paste selected text
