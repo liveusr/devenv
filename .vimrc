@@ -36,11 +36,13 @@ filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   - highlight the search text and seach while typing
+"   - do not wrap search around the end of file
 "   - enable case insensitive search by default, eg:   /text   or   /Text\c
 "   - for case sensitive search use:                   /Text   or   /text\C
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch
 set incsearch
+set nowrapscan
 
 set ignorecase
 set smartcase
