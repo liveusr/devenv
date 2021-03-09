@@ -17,7 +17,7 @@ set number
 set cursorline
 set cursorlineopt=number
 highlight LineNR        cterm=none  ctermbg=none    ctermfg=DarkGrey
-highlight CursorLineNR  cterm=bold  ctermbg=none    ctermfg=Grey
+highlight CursorLineNR  cterm=bold  ctermbg=none    ctermfg=White
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   - use 4 spaces long tab character
@@ -58,10 +58,15 @@ highlight IncSearch ctermfg=red ctermbg=white
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "highlight ExtraWhitespace ctermbg=Black ctermfg=DarkGrey
 "match ExtraWhitespace /\s\+$\|\t/
-highlight TabCharacter      ctermbg=Black   ctermfg=DarkGrey
-highlight ExtraWhitespace   ctermbg=Black   ctermfg=Red
-call matchadd('TabCharacter', '\t', 1)
-call matchadd('ExtraWhitespace', '\s\+$', 2)
+function! ShowSpacesAndTabs()
+    highlight TabCharacter      ctermbg=Black   ctermfg=DarkGrey
+    highlight ExtraWhitespace   ctermbg=Black   ctermfg=Red
+    call matchadd('TabCharacter', '\t', 1)
+    call matchadd('ExtraWhitespace', '\s\+$', 2)
+endfun
+autocmd VimEnter * :call ShowSpacesAndTabs()
+autocmd WinNew   * :call ShowSpacesAndTabs()
+autocmd TabNew   * :call ShowSpacesAndTabs()
 
 set listchars=tab:›\ ,trail:.
 set list
