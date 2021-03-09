@@ -39,6 +39,7 @@ filetype plugin indent on
 "   - do not wrap search around the end of file
 "   - enable case insensitive search by default, eg:   /text   or   /Text\c
 "   - for case sensitive search use:                   /Text   or   /text\C
+"   - highlight search text in yellow and text to be replaced in red
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch
 set incsearch
@@ -46,6 +47,9 @@ set nowrapscan
 
 set ignorecase
 set smartcase
+
+highlight Search ctermfg=black ctermbg=yellow
+highlight IncSearch ctermfg=red ctermbg=white
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   - highlight trailing whitespaces and tabs
