@@ -64,7 +64,7 @@ function! ShowSpacesAndTabs()
     call matchadd('TabCharacter', '\t', 1)
     call matchadd('ExtraWhitespace', '\s\+$', 2)
 endfun
-autocmd VimEnter * :call ShowSpacesAndTabs()
+autocmd BufEnter * :call ShowSpacesAndTabs()
 autocmd WinNew   * :call ShowSpacesAndTabs()
 autocmd TabNew   * :call ShowSpacesAndTabs()
 
