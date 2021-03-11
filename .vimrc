@@ -48,8 +48,8 @@ set nowrapscan
 set ignorecase
 set smartcase
 
-highlight Search ctermfg=black ctermbg=yellow
-highlight IncSearch ctermfg=red ctermbg=white
+highlight Search        ctermfg=black   ctermbg=yellow
+highlight IncSearch     ctermfg=red     ctermbg=white
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   - highlight trailing whitespaces and tabs
@@ -75,13 +75,14 @@ map X :%s/\s\+$//g <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   - open vertical split on the right and horizontal split below the current
-"   - use Ctrl+W to navigate between splits
+"   - use Ctrl+N / Ctrl+B to navigate between splits
 "   - highlight status line off current split
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set splitright
 set splitbelow
 
-map <C-W> <C-W>w
+map <C-n> <C-W>w
+map <C-b> <C-W>W
 
 highlight StatusLine    ctermbg=black   ctermfg=gray
 highlight StatusLineNC  ctermbg=black   ctermfg=darkgray
