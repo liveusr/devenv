@@ -8,7 +8,7 @@ vbell off                   # turn off visual bell, and use audio bell instead
 
 termcapinfo xterm* ti@:te@  # enable mouse scroll in copy mode
 term screen-256color        # set $TERM to use 256 colors
-mousetrack on               # use mouse to select regions
+#mousetrack on               # use mouse to select regions
 
 altscreen on                # clear vim window after closing vim
 defscrollback 200000        # set scrollback buffer size to 200000 lines
@@ -18,33 +18,39 @@ defdynamictitle off         # do not set prompt as the window title
 escape ^\\                  # change window command key to 'Ctrl + \'
 
 # display status line on the top
+backtick 1 0 1 env TZ="America/New_York" date +"%H:%M %Z"
+backtick 2 0 1 cat $HOME/.rate
 hardstatus alwaysfirstline
-hardstatus string "%{u K}%S %= %-w%{w}%n %t%{-}%+w %= %m/%d%{-} %0c:%s"
+hardstatus string "%{u dK}[%S]%2` %= <j<   %-w%{w}%n %t%{-}%+w   >k> %= %D %M %d %1`%{= dw} %0c:%s"
 
 # display caption for each region at the bottom
 caption always
-caption string "%?%F%{u dw}%:%{u dK}%? %n %t %?%F%{u dw}%:%{u dk}%?"
+caption string "%?%F%{kK}%:%{u kK}%? %= %?%F <h< %{WK}%?  %n %t  %?%F%{kK} >l> %? %= "
 
 # render vertical split line in black color and set command line fg to white
-rendition so "wk"
+rendition so "wK"
 
 bind l eval "layout new" focus screen         # Esc + L : new layout
 bind k layout remove                          # Esc + R : remove layout
 
+bindkey ^n eval "layout next" "layout show"   # Ctl + N : next layout
+bindkey ^b eval "layout prev" "layout show"   # Ctl + B : next layout
+
 bind \ eval "split -v" focus screen           # Esc + \ : vertical split
 bind - eval "split" focus screen              # Esc + - : horizontal split
-bind r remove                                 # Esc + R : remove region/split
+bind x remove                                 # Esc + X : remove region/split
 
 bind = resize -b =                            # Esc + = : reset all regions
 bind ] resize +5                              # Esc + ] : increase region size
 bind [ resize -5                              # Esc + [ : decrease region size
 
+bindkey ^l focus next                         # Ctl + L : next region/split
+bindkey ^h focus prev                         # Ctl + H : prev region/split
+
 bindkey ^o screen                             # Ctl + O : new window
 
-bindkey ^l eval "layout next" "layout show"   # Ctl + L : next layout
-bindkey ^k focus next                         # Ctl + K : next region/split
-bindkey ^n next                               # Ctl + N : next window
-bindkey ^b prev                               # Ctl + B : previous window
+bindkey ^k next                               # Ctl + K : next window
+bindkey ^j prev                               # Ctl + J : previous window
 
 bindkey ^y copy                               # Ctl + Y : enter copy/scroll mode
 bind p paste .                                # Esc + p : paste selected text
