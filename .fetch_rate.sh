@@ -13,7 +13,7 @@ j=0
 echo -n " fetching..." > $out_file
 wget -q https://www.remitly.com/us/en/india -O $tmp_file
 
-echo -n " reading..." > $out_file
+echo -n " reading... " > $out_file
 while read -n1 c; do
     if [ "$c" == "${tag_str[$tag_id]:$i:1}" ] || (( i == 7 )); then
         i=$((i+1))
