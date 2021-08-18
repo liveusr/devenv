@@ -1,6 +1,7 @@
 # assign name to a session :    Esc :sessionname <name>  -OR-  screen -S <name>
 # assign name to a layout  :    Esc :layout title <name>
 # assign name to a window  :    Esc :title <name>
+# change window number     :    Esc :number <new_number>
 
 startup_message off         # turn off the startup message and copyright notice
 autodetach on               # automatically detach on hangup
@@ -8,7 +9,7 @@ vbell off                   # turn off visual bell, and use audio bell instead
 
 termcapinfo xterm* ti@:te@  # enable mouse scroll in copy mode
 term screen-256color        # set $TERM to use 256 colors
-#mousetrack on               # use mouse to select regions
+#mousetrack on              # use mouse to select regions
 
 altscreen on                # clear vim window after closing vim
 defscrollback 200000        # set scrollback buffer size to 200000 lines
@@ -21,37 +22,38 @@ escape ^\\                  # change window command key to 'Ctrl + \'
 backtick 1 0 1 env TZ="America/New_York" date +"%H:%M %Z"
 backtick 2 0 1 cat $HOME/.rate
 hardstatus alwaysfirstline
-hardstatus string "%{u dK}[%S]%2` %= <j<   %-w%{w}%n %t%{-}%+w   >k> %= %D %M %d %1`%{= dw} %0c:%s"
+hardstatus string "%{u dK}[%S]%2` %= <j<   %-w%{w}%n %t%{-}%+w   >l> %= %D %M %d %1`%{= dw} %0c:%s"
 
 # display caption for each region at the bottom
 caption always
-caption string "%?%F%{kK}%:%{u kK}%? %= %?%F <h< %{WK}%?  %n %t  %?%F%{kK} >l> %? %= "
+caption string "%?%F%{kK}%:%{u kK}%? %= %?%F <h< %{WK}%?  %n %t  %?%F%{kK} >k> %? %= "
 
 # render vertical split line in black color and set command line fg to white
 rendition so "wK"
 
-bind l eval "layout new" focus screen         # Esc + L : new layout
-bind k layout remove                          # Esc + R : remove layout
+bindkey  ^o  eval "layout new"  focus screen  # Ctl + O : new window
+bind      k  layout remove                    # Esc + K : remove layout
+bind      l  eval "layout show"               # Esc + L : new window
 
-bindkey ^n eval "layout next" "layout show"   # Ctl + N : next layout
-bindkey ^b eval "layout prev" "layout show"   # Ctl + B : next layout
+bindkey  ^l  eval "layout next"               # Ctl + L : next layout
+bindkey  ^j  eval "layout prev"               # Ctl + J : next layout
 
-bind \ eval "split -v" focus screen           # Esc + \ : vertical split
-bind - eval "split" focus screen              # Esc + - : horizontal split
-bind x remove                                 # Esc + X : remove region/split
+bind      \  eval "split -v"    focus screen  # Esc + \ : vertical split
+bind      -  eval "split"       focus screen  # Esc + - : horizontal split
+bind      x  remove                           # Esc + X : remove region/split
 
-bind = resize -b =                            # Esc + = : reset all regions
-bind ] resize +5                              # Esc + ] : increase region size
-bind [ resize -5                              # Esc + [ : decrease region size
+bindkey  ^k  focus next                       # Ctl + K : next region/split
+bindkey  ^h  focus prev                       # Ctl + H : prev region/split
 
-bindkey ^l focus next                         # Ctl + L : next region/split
-bindkey ^h focus prev                         # Ctl + H : prev region/split
+bind      =  resize -b =                      # Esc + = : reset all regions
+bind      ]  resize +5                        # Esc + ] : increase region size
+bind      [  resize -5                        # Esc + [ : decrease region size
 
-bindkey ^o screen                             # Ctl + O : new window
+bind      o  screen                           # Esc + O : new window
 
-bindkey ^k next                               # Ctl + K : next window
-bindkey ^j prev                               # Ctl + J : previous window
+bindkey  ^n  next                             # Ctl + N : next window
+bindkey  ^b  prev                             # Ctl + B : previous window
 
-bindkey ^y copy                               # Ctl + Y : enter copy/scroll mode
-bind p paste .                                # Esc + p : paste selected text
-bind d detach                                 # Esc + d : detach screen session
+bindkey  ^y  copy                             # Ctl + Y : enter copy/scroll mode
+bind      p  paste .                          # Esc + p : paste selected text
+bind      d  detach                           # Esc + d : detach screen session
