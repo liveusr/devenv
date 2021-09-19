@@ -75,12 +75,13 @@ map X :%s/\s\+$//g <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   - open vertical split on the right and horizontal split below the current
-"   - use Ctrl+N / Ctrl+B to navigate between splits
+"   - use Ctrl+W or Ctrl+m or Ctrl+{N/B} to navigate between splits
 "   - highlight status line off current split
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set splitright
 set splitbelow
 
+map <C-m> <C-W>w
 map <C-n> <C-W>w
 map <C-b> <C-W>W
 
