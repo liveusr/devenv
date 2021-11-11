@@ -75,18 +75,19 @@ map X :%s/\s\+$//g <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   - open vertical split on the right and horizontal split below the current
-"   - use Ctrl+W or Ctrl+m or Ctrl+{N/B} to navigate between splits
+"   - use Ctrl+W+W or Ctrl+M to navigate between splits
 "   - highlight status line off current split
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set splitright
 set splitbelow
 
 map <C-m> <C-W>w
-map <C-n> <C-W>w
-map <C-b> <C-W>W
+"map <C-n> <C-W>w
+"map <C-b> <C-W>W
 
 highlight StatusLine    ctermbg=black   ctermfg=gray
 highlight StatusLineNC  ctermbg=black   ctermfg=darkgray
+highlight VertSplit     ctermbg=gray    ctermfg=gray
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   - keep 5 lines above and below the cursor while vertical scrolling
