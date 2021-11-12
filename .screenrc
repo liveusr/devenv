@@ -22,11 +22,11 @@ escape ^\\                  # change window command key to 'Ctrl + \'
 backtick 1 0 1 env TZ="America/New_York" date +"%H:%M %Z"
 backtick 2 0 1 cat $HOME/.rate
 hardstatus alwayslastline
-hardstatus string "%{u kK}[%S]%2` %= <j<   %-w%{w}%n %t%{-}%+w   >l> %= >K< %D %M %d %1`%{= dw} %0c:%s"
+hardstatus string "%{u kK}[%S]%2` %= %{kb}<j<%{-}   %-w%{w}%n %t%{-}%+w   %{kb}>l>%{-} %= %{kR}>K<%{-} %D %M %d %1`%{= dw} %0c:%s"
 
 # display caption for each region at the bottom
 caption splitonly
-caption string "%?%F%{kK}%:%{u kK}%? %= %?%F <h< %{WK}%?  %n %t  %?%F%{kK} >k> %? %= %?%F>X<%:   %? "
+caption string "%?%F%{kK}%:%{u kK}%? %= %?%F %{g}<h<%{-} %{WK}%?  %n %t  %?%F%{kK} %{g}>k>%{-} %? %= %?%F%{R}>X<%{-}%:   %? "
 
 # render vertical split line in black color and set command line fg to white
 rendition so "wK"
