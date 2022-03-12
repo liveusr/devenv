@@ -1,7 +1,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"   - set name of the terminal
 "   - set dark background and default syntax highlighting
 "   - highlight 81st column
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set term=xterm-256color
 set background=dark
 syntax on
 
