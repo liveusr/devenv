@@ -8,7 +8,7 @@ autodetach on               # automatically detach on hangup
 vbell off                   # turn off visual bell, and use audio bell instead
 
 termcapinfo xterm* ti@:te@  # enable mouse scroll in copy mode
-term screen-256color        # set $TERM to use 256 colors
+term xterm-256color         # set $TERM to use 256 colors
 #mousetrack on              # use mouse to select regions
 
 altscreen on                # clear vim window after closing vim
