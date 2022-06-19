@@ -8,4 +8,4 @@
 [merge]
         tool = vimdiff
 [alias]
-        logs = log --pretty=tformat:"%C(yellow)%h%C(reset)%x09%cs%x09%<(20,trunc)%an%x09%s"
+        logs = log --pretty=tformat:"%C(yellow)%h%C(reset)%x20%x20%cs%x20%x20%<(20,trunc)%an%x09%s"
