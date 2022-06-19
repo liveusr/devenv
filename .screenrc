@@ -22,17 +22,17 @@ escape ^\\                  # change window command key to 'Ctrl + \'
 backtick 1 0 1 env TZ="America/New_York" date +"%H:%M %Z"
 backtick 2 0 1 cat $HOME/.rate
 hardstatus alwayslastline
-hardstatus string "%{u kK}[%S]%2` %= %{kb}<j<%{-}   %-w%{w}%n %t%{-}%+w   %{kb}>l>%{-} %= %{kR}>K<%{-} %D %M %d %1`%{= dw} %0c:%s"
+hardstatus string "%{u kK}[%S]%2` %= %{kb}<j<%{-}   %-w%{w}%n %t%{-}%+w   %{kb}>l>%{-} %= %{kR}>X<%{-} %D %M %d %1`%{= dw} %0c:%s"
 
 # display caption for each region at the bottom
 caption splitonly
-caption string "%?%F%{kK}%:%{u kK}%? %= %?%F %{g}<h<%{-} %{WK}%?  %n %t  %?%F%{kK} %{g}>k>%{-} %? %= %?%F%{R}>X<%{-}%:   %? "
+caption string "%?%F%{kK}%:%{u kK}%? %= %?%F %{g}<h<%{-} %{WK}%?  %n %t  %?%F%{kK} %{g}>k>%{-} %? %= %?%F%{R}>K<%{-}%:   %? "
 
 # render vertical split line in black color and set command line fg to white
 rendition so "wK"
 
 bindkey  ^o  eval "layout new"  focus screen  # Ctl + O : new window
-bind      k  layout remove                    # Esc + K : remove layout
+bind      x  layout remove                    # Esc + X : remove layout
 bind      l  eval "layout show"               # Esc + L : new window
 
 bindkey  ^l  eval "layout next"               # Ctl + L : next layout
@@ -40,7 +40,7 @@ bindkey  ^j  eval "layout prev"               # Ctl + J : next layout
 
 bind      \  eval "split -v"    focus screen  # Esc + \ : vertical split
 bind      -  eval "split"       focus screen  # Esc + - : horizontal split
-bind      x  remove                           # Esc + X : remove region/split
+bind      k  remove                           # Esc + K : remove region/split
 
 bindkey  ^k  focus next                       # Ctl + K : next region/split
 bindkey  ^h  focus prev                       # Ctl + H : prev region/split
