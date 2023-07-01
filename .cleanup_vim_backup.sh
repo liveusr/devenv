@@ -1,27 +1,39 @@
 #!/bin/bash
 
+# Find the base directory name instead of a full path.
+dirname=${PWD##*/}
+
+if [ "$dirname" != ".backup" ]; then
+    echo "ERROR: Run this script from the .backup directory."
+    exit
+fi
+
+echo "Cleaning up the ${dirname} directory ..."
+
+mkdir -p .trash
+
 prev_file=""
 prev_file_op=""
 
-for file in `ls .backup`
+for file in `ls`
 do
     file_op=`echo $file | head -c 14 | tail -c 1`
-    diff=`diff .backup/$prev_file .backup/$file 2>&1`
+    diff=`diff $prev_file $file 2>&1`
 
     if [ "$diff" == "" ]; then
         if [ "$prev_file_op" == "$file_op" ]; then
             # File opened or written multiple times without any changes. Keep
             # the latest revision and remove older revisions.
 
-            # echo "removing duplicate" $prev_file
-            rm .backup/$prev_file
+            echo "Removing duplicate" $prev_file
+            mv $prev_file .trash/
 
         elif [ "$file_op"  == "w" ]; then
             # File written without any changes after opening. Remove the
             # duplicate write revision.
 
-            # echo "removing duplicate" $file
-            rm .backup/$file
+            echo "Removing duplicate" $file
+            mv $file .trash/
 
             continue
         fi
