@@ -31,14 +31,14 @@ do
             # File opened or written multiple times without any changes. Keep
             # the latest revision and remove older revisions.
 
-            echo "Removing duplicate" $prev_file
+            echo -e "\rRemoving duplicate" $prev_file
             mv $prev_file .trash/
 
         elif [ "$file_op"  == "w" ]; then
             # File written without any changes after opening. Remove the
             # duplicate write revision.
 
-            echo "Removing duplicate" $file
+            echo -e "\rRemoving duplicate" $file
             mv $file .trash/
 
             continue
