@@ -8,15 +8,21 @@ if [ "$dirname" != ".backup" ]; then
     exit
 fi
 
-echo "Cleaning up the ${dirname} directory ..."
+echo "Cleaning up the ${dirname} directory..."
 
 mkdir -p .trash
 
 prev_file=""
 prev_file_op=""
 
+count=`ls | wc -l`
+i=1
+
 for file in `ls`
 do
+    echo -n -e "\rChecking $i/$count"
+    ((i++))
+
     file_op=`echo $file | head -c 14 | tail -c 1`
     diff=`diff $prev_file $file 2>&1`
 
@@ -42,3 +48,5 @@ do
     prev_file=$file
     prev_file_op=$file_op
 done
+
+echo -e "\nDone."
