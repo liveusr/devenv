@@ -11,3 +11,5 @@
         logs = log --pretty=tformat:"%C(yellow)%h%C(reset)%x20%x20%cs%x20%x20%<(20,trunc)%an%x09%s"
 [pull]
         rebase = true
+[status]
+        showuntrackedfiles = all
