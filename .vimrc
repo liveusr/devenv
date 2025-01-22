@@ -12,12 +12,13 @@ set colorcolumn=81
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   - show line numbers     (to disable :set nonumber)
-"   - highlight current line number
+"   - highlight current line and line number
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set number
 
 set cursorline
-set cursorlineopt=number
+set cursorlineopt=line,number
+highlight CursorLine    cterm=none  ctermbg=black
 highlight LineNR        cterm=none  ctermbg=none    ctermfg=DarkGrey
 highlight CursorLineNR  cterm=bold  ctermbg=none    ctermfg=White
 
