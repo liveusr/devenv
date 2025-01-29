@@ -129,7 +129,12 @@ function! ShowFuncName()
     let l:linenum = line(".")
     if !exists('w:linenum') || w:linenum != l:linenum
         let w:linenum = l:linenum
-        let l:funcname = getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bcWn'))
+        let l:ext = fnamemodify(expand("%"), ":e")
+        if l:ext == "py"
+            let l:funcname = getline(search("^[ \t]*def ", 'bcWn'))
+        else
+            let l:funcname = getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bcWn'))
+        endif
         if l:funcname != ""
             echo ">>>" strpart(l:funcname, 0, winwidth(0)-24)
         else
