@@ -18,7 +18,7 @@ set number
 
 set cursorline
 set cursorlineopt=line,number
-highlight CursorLine    cterm=none  ctermbg=black
+highlight CursorLine    cterm=underline                 ctermul=DarkGrey
 highlight LineNR        cterm=none  ctermbg=none    ctermfg=DarkGrey
 highlight CursorLineNR  cterm=bold  ctermbg=none    ctermfg=White
 
