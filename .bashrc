@@ -2,3 +2,5 @@
 if test -z "$STY"; then
     screen -ls
 fi
+
+alias ls='ls --color --group-directories-first'
