@@ -7,7 +7,7 @@ set term=xterm-256color
 set background=dark
 syntax on
 
-highlight ColorColumn ctermbg=Black
+highlight ColorColumn   ctermbg=Black
 set colorcolumn=81
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -18,9 +18,16 @@ set number
 
 set cursorline
 set cursorlineopt=line,number
-highlight CursorLine    cterm=underline                 ctermul=DarkGrey
-highlight LineNR        cterm=none  ctermbg=none    ctermfg=DarkGrey
-highlight CursorLineNR  cterm=bold  ctermbg=none    ctermfg=White
+highlight CursorLine    cterm=underline                 ctermul=Black
+highlight LineNR        cterm=none      ctermbg=none    ctermfg=DarkGrey
+highlight CursorLineNR  cterm=bold      ctermbg=none    ctermfg=White
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"   - change autocomplete pop-up menu color
+"   - highlight selected item from the pop-up menu
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+highlight Pmenu                         ctermbg=Black   ctermfg=Darkgrey
+highlight PmenuSel      cterm=bold      ctermbg=Black   ctermfg=Yellow
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   - use 4 spaces long tab character
