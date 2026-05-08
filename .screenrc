@@ -1,7 +1,23 @@
+register HELP "
+
+                            ***  CUSTOM  HELP  ***
+
+
+                            Command Key : Ctrl + \
+
+ [ Show Help ]   [ Prev Tab ]    [ New  Tab ]    [ Next Tab ]    [ Close Tab ]
+    C-\ + h        Ctrl + j        Ctrl + o        Ctrl + l         C-\ + k
+
+
+                         < Press any key to return >
+"
+
 # assign name to a session :    Esc :sessionname <name>  -OR-  screen -S <name>
 # assign name to a layout  :    Esc :layout title <name>
 # assign name to a window  :    Esc :title <name>
 # change window number     :    Esc :number <new_number>
+
+sessionname "screen"        # Sets the default name for this session to "screen"
 
 startup_message off         # turn off the startup message and copyright notice
 autodetach on               # automatically detach on hangup
@@ -19,14 +35,15 @@ defdynamictitle off         # do not set prompt as the window title
 escape ^\\                  # change window command key to 'Ctrl + \'
 
 # display status line on the top
-backtick 1 0 1 env TZ="America/New_York" date +"%H:%M %Z"
-backtick 2 0 1 cat $HOME/.rate
+backtick 1 0 1 env TZ="America/New_York" date +"%Z %H:%M"
+backtick 2 0 1 env TZ="Asia/Kolkata" date +"%Z %H:%M"
+backtick 3 0 1 cat $HOME/.rate
 hardstatus alwayslastline
-hardstatus string "%{u kK}[%S]%2` %= %{= kb} <j] %{u kK}  %-w%{w}%n %t%{-}%+w  %{= kb} [l> %{u kK} %= %{= kR} [\\k] %{u kK}%D %M %d %1`%{= dw} %0c:%s"
+hardstatus string "%{= dw}[%S] %{u kK}%2`%{= kR} [\\h] %{u kK} %= %{= kb} <j] %{u kK}  %-w%{w}%n %t%{-}%+w  %{= kb} [l> %{u kK} %= %{= kR} [\\k] %{u kK}%D %M %d%{= dw} %0c:%s"
 
 # display caption for each region (split) at the bottom
 caption splitonly
-caption string "%?%F%{kK}%:%{u kK}%? %= %?%F %{g}<h]%{-} %{WK}%?  %n %t  %?%F%{kK} %{g}[k>%{-} %? %= %?%F%{r}[\\x]%{-}%:    %? "
+caption string "%?%F%{kK}%:%{u kK}%? %= %?%F %{g}<h]%{-} %{WK}%?  %n %t  %?%F%{kK} %{g}[k>%{-} %? %= %?%F%{r}[\\x]%{-}%:    %?"
 
 # render vertical split line in black color and set command line fg to white
 rendition so "wK"
@@ -62,5 +79,8 @@ bind      c  eval "clear" "scrollback 0" "scrollback 200000"                    
 bind      s  exec sh -c 'screen -X hardcopy "$HOME/screen_$(date +%Y%m%d_%H%M%S).txt"'          # Esc + s : screenshot of visible screen
 bind      S  exec sh -c 'screen -X hardcopy -h "$HOME/screen_$(date +%Y%m%d_%H%M%S)_full.txt"'  # Esc + S : screenshot of scrollback buffer
 
+bind      t colon "title "                    # Esc + t : rename screen session
+bind      T colon "sessionname "              # Esc + T : rename screen session
+
 # Custom help text
-bind h screen -t HELP_MENU bash -c "echo 'CUSTOM HELP'; echo; echo 'Help line 1'; echo 'Help line 2'; echo; echo 'Help line 3'; echo; echo '[Press any key to return]'; read -n 1"
+bind h screen -t " [ HELP MENU ] " bash -c "head -n 12 $HOME/.screenrc | tail -n 11; read -n 1"
